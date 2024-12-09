@@ -1,0 +1,31 @@
+# https://zenn.dev/sg4k0/articles/1da799501d2018
+
+services:
+  react:
+    build:
+      args:
+        - NODE_VER=22-slim
+      context: .
+      dockerfile: ./docker/react/Dockerfile
+    tty: true
+    volumes:
+      # docker-compose run --rm react yarn create vite
+      #- ./:/home/node/app  # create でディレクトリが作成されるのでマウント位置を変える
+      - ./react:/home/node/app
+    ports:
+      - "5173:5173"
+
+  express:
+    build:
+      args:
+        - NODE_VER=22-slim
+      context: .
+      dockerfile: ./docker/express/Dockerfile
+    tty: true
+    volumes:
+      # docker-compose run --rm express yarn add express
+      # docker-compose run --rm express yarn add nodemon --dev
+      # docker-compose run --rm express yarn add mysql2
+      - ./express:/home/node/app  
+    ports:
+      - "8000:8000"
