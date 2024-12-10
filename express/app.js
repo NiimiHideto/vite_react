@@ -9,7 +9,7 @@ const loggerMiddleware = function(req, res, next) {
 app.use(loggerMiddleware);
 
 
-// apiのサンプル 別ファイルに分ける
+// API 別ファイルに分ける
 app.use("/api/photo", require("./api/photo.js"))
 app.use("/api/item", require("./api/item.js"))
 
