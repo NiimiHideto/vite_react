@@ -106,7 +106,7 @@ app.put("/", asyncWrapper(async (req, res, next) => {
         return;
     }
 
-
+    // test
     
     console.log("update id=" + id + " name=" + name + " price=" + price);
     res.send("OK\n");
